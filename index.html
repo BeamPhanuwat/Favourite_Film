@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favourite Film</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700;800;900&display=swap');
+        /*นำเข้าFont*/
+        body{
+            font-family: Prompt, sans-serif;
+            background-color: black;
+            margin: 30px 60px;
+        }
+        /*กำหนดให้ทั้งเว็บมี margin: 30px 60px; และพื้นหลังเป็นสีดำ*/
+
+        header{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        /*กำหนดให้ความยาวเต็มจอแสดงผล ให้การแสดงผลเป็นแนวนอน มีช่องว่างเท่าๆกันระหว่างcontent*/
+        header .logo{
+            color: #E50914;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 2em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        /*กำหนดลักษณะโลโก้*/
+        header ul{
+            display: flex;
+            align-items: center;
+        }
+        header ul li
+        {
+            list-style: none;
+            margin-left: 20px;
+        }
+        header ul li a{
+            text-decoration: none;
+            padding: 6px 15px;
+            color: white;
+        }
+        header ul li a:hover, header ul li a.active{
+            color: #E50914;
+        }
+        p{
+            font-size: 1em;
+            color: white;
+        }
+        .primary_btn{
+            text-decoration: none;
+            padding: 10px 15px;
+            color: white;
+            background: #E50914;
+            margin-right: 12px;
+            border-radius: 10px;
+        }
+        /*กำหนดปุ่มหลัก*/
+        .primary_btn:hover{
+            padding: 12px 17px;
+        }
+        /*กำหนดปุ่มหลักเมื่อเมาส์อยู่เหนือ*/
+        .secondary_btn{
+            text-decoration: none;
+            padding: 10px 15px;
+            color: white;
+            border: solid  2px white;
+            border-radius: 10px;
+        }
+        /*กำหนดปุ่มรอง*/
+        .secondary_btn:hover{
+            padding: 12px 17px;
+        }
+        /*กำหนดปุ่มรองเมื่อเมาส์อยู่เหนือ*/
+        .icon{
+            vertical-align: middle;
+            width: 18px;
+            height: 18px;
+            margin-right: 7px;
+        }
+        /*กำหนดขนาดclass icon, margin*/
+        h2{
+            margin-top: 50px;
+            border-left: solid 5px #E50914;
+            color: white;
+            font-weight: 400;
+            font-size: 1.4em;
+            padding-left: 10px;
+        }
+        #first_film{
+            background-image: url("./img/parasite.png");
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            padding-top: 50px;
+            padding-bottom: 5px;
+        }
+        /*กำหนดขนาดid first_film ซึ่งเป็นส่วนหัวของหนังเรื่องแรก ให้มีพื้นหลังเป็นรูปภาพ*/
+        .example{
+            display: flex;
+            padding: 0;
+        }
+        /*กำหนดclass ของภาพตัวอย่างของภาพยนตร์ เรียงเป็นแนวนอน*/
+        .example li {
+            margin-right: 18px;
+        }
+        .example li img{
+            width: 160px;
+            height: auto;
+            border-radius: 6px;
+        }
+        .example li img:hover{
+            width: 165px;
+            height: auto;
+        }
+        .age{
+            border: solid 1px white;
+            border-radius: 4px;
+        }
+        /*กำหนดspan ที่มีclassชื่อ age ให้มีกรอบสีขาวมน เพื่อแสดงเรตของภาพยนตร์*/
+        .description{
+            font-size: 0.9em;
+            color: #909090;
+            margin-top: -8px
+        }
+        /*กำหนดส่วนคำอธิบายชื่อของนักแสดง ในที่นี้คือชื่อภาษาอังกฤษ*/
+        .cast{
+            display: flex;
+            padding: 0;
+            width: 100%;
+            margin-right: 40px;
+            margin-bottom: 32px;
+        }
+        /*กำหนดclass ของภาพนักแสดงเรียงเป็นแนวนอน*/
+        .cast li{
+            display: flex;
+        }
+        .cast li img{
+            width: 90px;
+            height: 90px;
+            border-radius: 6px;
+        }
+        .cast li ul{
+            padding-left: 18px;
+            width: 172px;
+        }
+        #second_film{
+            background-image: url("./img/as_the_gods_will.png");
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            padding-top: 50px;
+            padding-bottom: 5px;
+        }
+        /*กำหนดขนาดid second_film ซึ่งเป็นส่วนหัวของหนังเรื่องแรก ให้มีพื้นหลังเป็นรูปภาพ*/
+        footer{
+            padding: 10px 20px;
+        }
+        footer .logo{
+            color: #E50914;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 1.5em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="#" class="logo">Favourite Film</a>
+        <ul>
+            <li><a href="#first_film">Parasite</a></li>
+            <li><a href="#second_film">As the gods will</a></li>
+            <li><a href="https://github.com/BeamPhanuwat" target="_blank">About me</a></li>
+        </ul>
+    </header>
+    <article>
+        <section id="first_film">
+            <p>2019 | <span class="age"> เรต16+ </span> | 2 ชั่วโมง 12 นาที | ชีวิต /ดราม่า</p>
+            <img src="./img/parasite_logo.png" alt="parasite_logo" height="70" width="auto">
+            <p style="margin-bottom: 35px;">สมาชิกมากเล่ห์จากครอบครัวยากจนครอบครัวหนึ่งต่างค่อยๆ<br>ทยอยแฝงตัวเข้าไปทำงานในบ้านของคู่สามีภรรยามหาเศรษฐีที่<br>ใช้ชีวิตอย่างอภิสิทธิ์ชนโดยไม่รู้เรื่องรู้ราว</p>
+            <a class="primary_btn" href="https://www.youtube.com/watch?v=v85mr9U2YGc" target="_blank"><img class="icon" src="./img/play.png">ดูตัวอย่าง</a>
+            <a class="secondary_btn" href="https://www.imdb.com/title/tt6751668/" target="_blank">รายละเอียดเพิ่มเติม</a>
+            <h2>ภาพตัวอย่าง</h2>
+            <ul class="example">
+                <li><img src="./img/example_1.png" alt="example_1"></li>
+                <li><img src="./img/example_2.png" alt="example_2"></li>
+                <li><img src="./img/example_3.png" alt="example_3"></li>
+            </ul>
+        </section>
+        <section>
+            <h2>นักแสดง</h2>
+            <ul class="cast">
+                <li>
+                    <img src="./img/cast_1.png" alt="cast_1">
+                    <ul>
+                        <li><p>ซงคังโฮ</p></li>
+                        <li><p class="description">Song Kang-ho</p></li>
+                    </ul>
+                </li>
+                <li>
+                    <img src="./img/cast_2.png" alt="cast_2">
+                    <ul>
+                        <li><p>อีซุนคยูน</p></li>
+                        <li><p class="description">Lee Sun-kyun</p></li>
+                    </ul>
+                </li>
+                <li>
+                    <img src="./img/cast_3.png" alt="cast_3">
+                    <ul>
+                        <li><p>โชโยจอง</p></li>
+                        <li><p class="description">Cho Yeo-jeong</p></li>
+                    </ul>
+                </li>
+                <li>
+                    <img src="./img/cast_4.png" alt="cast_4">
+                    <ul>
+                        <li><p>ชเวอูชิก</p></li>
+                        <li><p class="description">Choi Woo-shik</p></li>
+                    </ul>
+                </li>
+                <li>
+                    <img src="./img/cast_5.png" alt="cast_5">
+                    <ul>
+                        <li><p>พัคโซดัม</p></li>
+                        <li><p class="description">Park So-dam</p></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="cast">
+                <li>
+                    <img src="./img/cast_6.png" alt="cast_6">
+                    <ul>
+                        <li><p>อีจองอึน</p></li>
+                        <li><p class="description">Lee Jung-eun</p></li>
+                    </ul>
+                </li>
+                <li>
+                    <img src="./img/cast_7.png" alt="cast_7">
+                    <ul>
+                        <li><p>ชางฮเยจิน</p></li>
+                        <li><p class="description">Chang Hyae-jin</p></li>
+                    </ul>
+                </li>
+                <li>
+                    <img src="./img/cast_8.png" alt="cast_8">
+                    <ul>
+                        <li><p>พัคมยองฮุน</p></li>
+                        <li><p class="description">Park Myung-hoon</p></li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+        <section id="second_film" style="margin-top: 80px;">
+            <p>2014 | <span class="age"> เรต18+ </span> | 1 ชั่วโมง 57 นาที | ผจญภัย /สยองขวัญ /Sci-Fi</p>
+            <img src="./img/as_the_gods_will_logo.png" alt="as_the_gods_will_logo" height="70" width="auto">
+            <p style="margin-bottom: 35px;">เรื่องราวลึกลับในโรงเรียนมัธยมทั่ว โลกเด็กทุกคนถูกบังคับ<br>
+                ให้เล่นเกมที่เกี่ยวข้องกับความตายผู้ชนะจะรอดชีวิตในขณะที่ผู้แพ้<br>จะต้องทิ้งชีวิตไป กล่องสีขาวใหญ่ที่ลอยบนท้องฟ้าดูเหมือน<br>จะเชื่อมโยงกับเหตุการณ์ทั้งหมดนี้</p>
+            <a class="primary_btn" href="https://youtu.be/D56SZpan-jk?si=8dzrkK4heMReNplG" target="_blank"><img class="icon" src="./img/play.png">ดูตัวอย่าง</a>
+            <a class="secondary_btn" href="https://www.imdb.com/title/tt3354222/" target="_blank">รายละเอียดเพิ่มเติม</a>
+            <h2>ภาพตัวอย่าง</h2>
+            <ul class="example">
+                <li><img src="./img/example_4.png" alt="example_4"></li>
+                <li><img src="./img/example_5.png" alt="example_5"></li>
+                <li><img src="./img/example_6.png" alt="example_6"></li>
+            </ul>
+        </section>
+        <section>
+            <h2>นักแสดง</h2>
+            <ul class="cast">
+                <li>
+                    <img src="./img/cast_9.png" alt="cast_9">
+                    <ul>
+                        <li><p>ฟุคุชิ โชตะ</p></li>
+                        <li><p class="description">Sota Fukushi</p></li>
+                    </ul>
+                </li>
+                <li>
+                    <img src="./img/cast_10.png" alt="cast_10">
+                    <ul>
+                        <li><p>รีวโนซูเกะ คามิกิ</p></li>
+                        <li><p class="description">Ryunosuke Kamiki</p></li>
+                    </ul>
+                </li>
+                <li>
+                    <img src="./img/cast_11.png" alt="cast_11">
+                    <ul>
+                        <li><p>ฮิโรนะ ยามาซากิ</p></li>
+                        <li><p class="description">Hirona Yamazaki</p></li>
+                    </ul>
+                </li>
+                <li>
+                    <img src="./img/cast_12.png" alt="cast_12">
+                    <ul>
+                        <li><p>มิโอะ ยูกิ</p></li>
+                        <li><p class="description">Mio Yuki</p></li>
+                    </ul>
+                </li>
+                <li>
+                    <img src="./img/cast_13.png" alt="cast_13">
+                    <ul>
+                        <li><p>โชตะ โซเมะตานิ</p></li>
+                        <li><p class="description">Shota Sometani</p></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="cast" style="margin-bottom: 80px;">
+                <li>
+                    <img src="./img/cast_14.png" alt="cast_14">
+                    <ul>
+                        <li><p>นาโอะ โอโมริ</p></li>
+                        <li><p class="description">Nao Omori</p></li>
+                    </ul>
+                </li>
+                <li>
+                    <img src="./img/cast_15.png" alt="cast_15">
+                    <ul>
+                        <li><p>นิจิโร มุรากามิ</p></li>
+                        <li><p class="description">Nijiro Murakami</p></li>
+                    </ul>
+                </li>
+                <li>
+                    <img src="./img/cast_16.png" alt="cast_16">
+                    <ul>
+                        <li><p>โดริ ซะกุระดะ</p></li>
+                        <li><p class="description">Dori Sakurada</p></li>
+                    </ul>
+                </li>
+                <li>
+                    <img src="./img/cast_17.png" alt="cast_17">
+                    <ul>
+                        <li><p>ลิลลี่ ฟรังกี</p></li>
+                        <li><p class="description">Lily Franky</p></li>
+                    </ul>
+                </li>
+                <li>
+                    <img src="./img/cast_18.png" alt="cast_18">
+                    <ul>
+                        <li><p>อัตสึโกะ มาเอดะ</p></li>
+                        <li><p class="description">Atsuko Maeda</p></li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+    </article>
+    <hr style="border: solid 1px#E50914;">
+    <footer>
+        <a href="#" class="logo">Favourite Film</a>
+        <p>&copy; 2024 Phanuwat Lakronratch (663380179-0). All right reserved.</p>
+    </footer>
+</body>
+</html>
